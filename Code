@@ -1,0 +1,111 @@
+import random
+group = int(input("Type 2 for groups of 2, 3 for groups of 3 and 4, and 4 for groups of 4: "))
+exception1 = input("Input first exception: ")
+exception2 = input("Input second exception: ")
+group1 = []#creating groups 1-10
+group2 = []
+group3 = []
+if group == 2:
+  group4 = []
+  group5 = []
+  group6 = []
+  group9 = [exception1]
+  group10 = [exception2]
+if group == 3:
+  group4 = []
+  group5 = [exception1]
+  group6 = [exception2]
+if group == 4:
+  group4 = [exception1]
+  group5 = [exception2]
+  group6 = []
+group7 = []
+group8 = []
+classList = ['Aidan', 'Ben', 'Liam', 'Brandon', 'Jessie', 'Emma', 'Matt', 'Robert', 'Bobby', 'Brian', 'Alane', 'Anne', 'Evan', 'Eric', 'Jeanette', 'Lucas', 'Spencer', 'Graham']
+#classList = []
+groupNumber = 1
+randomPick = []
+while len(classList) > 0 and group == 3:
+  randomPick = random.choice(classList)
+  if groupNumber == 1:
+    group1.append(randomPick)
+  if groupNumber == 2:
+    group2.append(randomPick)
+  if groupNumber == 3:
+    group3.append(randomPick)
+  if groupNumber == 4:
+    group4.append(randomPick)
+  if groupNumber == 5:
+    group5.append(randomPick)
+  if groupNumber == 6:
+    group6.append(randomPick)
+  classList.remove(randomPick)
+  groupNumber = groupNumber + 1
+  if groupNumber == 7:
+    groupNumber = 1
+if group == 3:
+  print("Group 1: ", group1)
+  print("Group 2: ", group2)
+  print("Group 3: ", group3)
+  print("Group 4: ", group4)
+  print("Group 5: ", group5)
+  print("Group 6: ", group6)
+while len(classList) > 0 and group == 2:
+  randomPick = random.choice(classList)
+  if groupNumber == 1:
+    group1.append(randomPick)
+  if groupNumber == 2:
+    group2.append(randomPick)
+  if groupNumber == 3:
+    group3.append(randomPick)
+  if groupNumber == 4:
+    group4.append(randomPick)
+  if groupNumber == 5:
+    group5.append(randomPick)
+  if groupNumber == 6:
+    group6.append(randomPick)
+  if groupNumber == 7:
+    group7.append(randomPick)
+  if groupNumber == 8:
+    group8.append(randomPick)
+  if groupNumber == 9:
+    group9.append(randomPick)
+  if groupNumber == 10:
+    group10.append(randomPick)
+  classList.remove(randomPick)
+  groupNumber = groupNumber + 1
+  if groupNumber == 11:
+    groupNumber = 1
+if group == 2:
+  print("Group 1: ", group1)
+  print("Group 2: ", group2)
+  print("Group 3: ", group3)
+  print("Group 4: ", group4)
+  print("Group 5: ", group5)
+  print("Group 6: ", group6)
+  print("Group 7: ", group7)
+  print("Group 8: ", group8)
+  print("Group 9: ", group9)
+  print("Group 10: ", group10)
+while len(classList) > 0 and group == 4:
+  randomPick = random.choice(classList)
+  if groupNumber == 1:
+    group1.append(randomPick)
+  if groupNumber == 2:
+    group2.append(randomPick)
+  if groupNumber == 3:
+    group3.append(randomPick)
+  if groupNumber == 4:
+    group4.append(randomPick)
+  if groupNumber == 5:
+    group5.append(randomPick)
+  classList.remove(randomPick)
+  groupNumber = groupNumber + 1
+  if groupNumber == 6:
+    groupNumber = 1
+if group == 4:
+  print("Group 1: ", group1)
+  print("Group 2: ", group2)
+  print("Group 3: ", group3)
+  print("Group 4: ", group4)
+  print("Group 5: ", group5)
