@@ -1,59 +1,84 @@
-import random #random used to randomize names
-#classList = ['Andrew', 'Chris', 'Aidan', 'Ben', 'Liam', 'Brandon', 'Jessie', 'Emma', 'Matt', 'Robert', 'Bobby', 'Brian', 'Alane', 'Anne', 'Evan', 'Eric', 'Jeanette', 'Lucas', 'Spencer', 'Graham']
-classList = [] #insert class list here
-group = int(input("Type 2 for groups of 2, 3 for groups of 3 and 4, and 4 for groups of 4: ")) #input for group numbers
-# read exceptions and normalize casing so they match names in classList
-while group not in (2, 3, 4): #if the input is invlaid
-    print("Invalid input for group size. Please try again")
-    group = int(input("Type 2 for groups of 2, 3 for groups of 3 and 4, and 4 for groups of 4: ")) #asks for input again
-excep = int(input("Type 1 for no exceptions, 2 for an exception: ")) #input for exceptions
-while excep not in (1, 2): # if the input is invalid
-  print("Invalid input for exceptions. Try Again") #prints the input is invalid
-  excep = int(input("Type 1 for no exceptions, 2 for an exception: ")) #asks for input again
+import random  # random used to randomize names
+
+classList = ['Andrew', 'Chris', 'Aidan', 'Ben', 'Liam', 'Brandon', 'Jessie', 'Emma', 'Matt', 'Robert', 'Bobby', 'Brian', 'Alane', 'Anne', 'Evan', 'Eric', 'Jeanette', 'Lucas', 'Spencer', 'Graham']
+#classList = []  # insert class list here
+
+
+#controls inputs for groups to make sure they are valid
+while True:
+    try:
+        group = int(input("Type 2 for groups of 2, 3 for groups of 3 and 4, and 4 for groups of 4: "))
+        if group in (2, 3, 4):
+            break
+        else:
+            print("Invalid input for group size. Please try again.")
+    except ValueError:
+        print("Please enter a number (2, 3, or 4).")
+
+
+#controls input for exceptions to make sure they are valid
+while True:
+    try:
+        excep = int(input("Type 1 for no exceptions, 2 for an exception: "))
+        if excep in (1, 2):
+            break
+        else:
+            print("Invalid input for exceptions. Try again.")
+    except ValueError:
+        print("Please enter a number (1 or 2).")
+
+
 if excep == 2:
-  exception1 = input("Input first exception: ").strip().title() #input for exceptions
-  exception2 = input("Input second exception: ").strip().title() #input for exceptions
-  group1 = []#creating groups 1-10 with exceptions in the correct groups
-  group2 = []
-  group3 = []
-  if group == 3: #if it is groups of 3 and 4 put the exceptions in group 5 and 6
-    group4 = []
-    group5 = [exception1]
-    group6 = [exception2]
-  if group == 4: #if it is groups of 4 put the exceptions in group 4 and 5
-    group4 = [exception1]
-    group5 = [exception2]
-    group6 = []
-  group7 = []
-  group8 = []
-  group9 = []
-  group10 = []
-  if group == 2: # if it is groups of 2 put the exceptions in group 9 and 10
+    exception1 = input("Input first exception: ").strip().title()
+    exception2 = input("Input second exception: ").strip().title()
+#sets up groups 1-3 for all group sizes
+    group1 = []
+    group2 = []
+    group3 = []
+
+    if group == 3: #sets up groups 4-6 for groups of 3 and 4 and groups 7-10 for groups of 2
+        group4 = []
+        group5 = [exception1]
+        group6 = [exception2]
+
+    if group == 4: #sets up groups 4-5 for groups of 3 and 4 and groups 6-10 for groups of 2
+        group4 = [exception1]
+        group5 = [exception2]
+        group6 = []
+#sets up groups 7-10 for groups of 2
+    group7 = []
+    group8 = []
+    group9 = []
+    group10 = []
+
+    if group == 2: #sets up groups 4-10 for groups of 2
+        group4 = []
+        group5 = []
+        group6 = []
+        group9 = [exception1]
+        group10 = [exception2]
+
+    # Remove exceptions from class list
+    for exc in (exception1, exception2):
+        if exc in classList:
+            classList.remove(exc)
+        else:
+            print(f"Warning: '{exc}' not found in class list")
+
+if excep == 1: #sets up groups 1-10 for all group sizes with no exceptions
+    group1 = []
+    group2 = []
+    group3 = []
     group4 = []
     group5 = []
     group6 = []
-    group9 = [exception1]
-    group10 = [exception2]
-  #takes the exception input and checks if name is in list
-  for exc in (exception1, exception2): 
-    if exc in classList: #if name is in list remove it
-        classList.remove(exc)
-    else:
-        # warn the user in case of a typo or unknown name
-        print(f"Warning: '{exc}' not found in class list")
-if excep == 1: #if there are no exceptions create groups 1-10 empty
-  group1 = []
-  group2 = []
-  group3 = []
-  group4 = []
-  group5 = []
-  group6 = []
-  group7 = []
-  group8 = []
-  group9 = []
-  group10 = []
-groupNumber = 1 #starts group number at 1
-randomPick = [] #creates the random pick variable
+    group7 = []
+    group8 = []
+    group9 = []
+    group10 = []
+
+groupNumber = 1
+randomPick = []
 while len(classList) > 0 and group == 3: #if it is groups of 3 and 4 adds people to groups 1-6 until class list is empty
   randomPick = random.choice(classList)
   if groupNumber == 1:
